@@ -3,8 +3,8 @@
 module.exports = {
   client: "mysql",
   connection: {
-    database: "",
-    user: "",
+    database: "proteus",
+    user: "root",
     password: "",
   },
   migrations: {

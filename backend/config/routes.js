@@ -1,127 +1,151 @@
-module.exports = app => {
-    app.route('/administrador')
+module.exports = (app) => {
+  app
+    .route("/administrador")
     .get(app.api.administrador.get)
-    .post(app.api.administrador.post)
-    
-    app.route('/administrador/:id')
+    .post(app.api.administrador.post);
+
+  app
+    .route("/administrador/:id")
     .get(app.api.administrador.getById)
     .delete(app.api.administrador.remove)
-    .put(app.api.administrador.put)
+    .put(app.api.administrador.put);
 
-    app.route('/paciente')
-    .get(app.api.paciente.get)
-    .post(app.api.paciente.post)
-    
-    app.route('/paciente/:id')
+  app.route("/paciente").get(app.api.paciente.get).post(app.api.paciente.post);
+
+  app
+    .route("/paciente/:id")
     .get(app.api.paciente.getById)
     .delete(app.api.paciente.remove)
-    .put(app.api.paciente.put)
+    .put(app.api.paciente.put);
 
-    app.route('/nutricionista')
+  app
+    .route("/nutricionista")
     .get(app.api.nutricionista.get)
-    .post(app.api.nutricionista.post)
+    .post(app.api.nutricionista.post);
 
-    app.route('/nutricionista/:id')
+  app
+    .route("/nutricionista/:id")
     .get(app.api.nutricionista.getById)
     .delete(app.api.nutricionista.remove)
-    .put(app.api.nutricionista.put)
+    .put(app.api.nutricionista.put);
 
-    app.route('/avaliacao')
+  app.route("/dados_avaliacao").get(app.api.dadosAvaliacao.getAll);
+
+  app
+    .route("/avaliacao")
     .get(app.api.avaliacao.get)
-    .post(app.api.avaliacao.post)
+    .post(app.api.avaliacao.post);
 
-    app.route('/avaliacao/:id')
+  app
+    .route("/avaliacao/:id")
     .get(app.api.avaliacao.getById)
     .delete(app.api.avaliacao.remove)
-    .put(app.api.avaliacao.put)
+    .put(app.api.avaliacao.put);
 
-    app.route('/antropometria')
+  app
+    .route("/antropometria")
     .get(app.api.antropometria.get)
-    .post(app.api.antropometria.post)
+    .post(app.api.antropometria.post);
 
-    app.route('/antropometria/:id')
+  app
+    .route("/antropometria/:id")
     .get(app.api.antropometria.getById)
     .delete(app.api.antropometria.remove)
-    .put(app.api.antropometria.put)
+    .put(app.api.antropometria.put);
 
-    app.route('/versaoPaciente')
+  app
+    .route("/versao_paciente")
     .get(app.api.versaoPaciente.get)
-    .post(app.api.versaoPaciente.post)
+    .post(app.api.versaoPaciente.post);
 
-    app.route('/versaoPaciente/:id')
+  app
+    .route("/versao_paciente/:id")
     .get(app.api.versaoPaciente.getById)
     .delete(app.api.versaoPaciente.remove)
-    .put(app.api.versaoPaciente.put)
+    .put(app.api.versaoPaciente.put);
 
-    app.route('/versaoMedico')
+  app
+    .route("/versao_medico")
     .get(app.api.versaoMedico.get)
-    .post(app.api.versaoMedico.post)
+    .post(app.api.versaoMedico.post);
 
-    app.route('/versaoMedico/:id')
+  app
+    .route("/versao_medico/:id")
     .get(app.api.versaoMedico.getById)
     .delete(app.api.versaoMedico.remove)
-    .put(app.api.versaoMedico.put)
+    .put(app.api.versaoMedico.put);
 
-    app.route('/avaliacaoGlobal')
+  app
+    .route("/avaliacao_global")
     .get(app.api.avaliacaoGlobal.get)
-    .post(app.api.avaliacaoGlobal.post)
+    .post(app.api.avaliacaoGlobal.post);
 
-    app.route('/avaliacaoGlobal/:id')
+  app
+    .route("/avaliacao_global/:id")
     .get(app.api.avaliacaoGlobal.getById)
     .delete(app.api.avaliacaoGlobal.remove)
-    .put(app.api.avaliacaoGlobal.put)
+    .put(app.api.avaliacaoGlobal.put);
 
-    app.route('/sintomas')
-    .get(app.api.sintomas.get)
-    .post(app.api.sintomas.post)
+  app.route("/sintomas").get(app.api.sintomas.get).post(app.api.sintomas.post);
 
-    app.route('/sintomas/:id')
+  app
+    .route("/sintomas/:id")
     .get(app.api.sintomas.getById)
     .delete(app.api.sintomas.remove)
-    .put(app.api.sintomas.put)
+    .put(app.api.sintomas.put);
 
-    app.route('/exameFisico')
+  app
+    .route("/exame_fisico")
     .get(app.api.exameFisico.get)
-    .post(app.api.exameFisico.post)
+    .post(app.api.exameFisico.post);
 
-    app.route('/exameFisico/:id')
+  app
+    .route("/exame_fisico/:id")
     .get(app.api.exameFisico.getById)
     .delete(app.api.exameFisico.remove)
-    .put(app.api.exameFisico.put)
+    .put(app.api.exameFisico.put);
 
-    app.route('/condicaoClinica')
+  app
+    .route("/condicao_clinica")
     .get(app.api.condicaoClinica.get)
-    .post(app.api.condicaoClinica.post)
+    .post(app.api.condicaoClinica.post);
 
-    app.route('/condicaoClinica/:id')
+  app
+    .route("/condicao_clinica/:id")
     .get(app.api.condicaoClinica.getById)
     .delete(app.api.condicaoClinica.remove)
-    .put(app.api.condicaoClinica.put)
+    .put(app.api.condicaoClinica.put);
 
-    app.route('/exameFisicoVersaoMedico')
+  app
+    .route("/exame_fisico_versao_medico")
     .get(app.api.exameFisicoVersaoMedico.get)
-    .post(app.api.exameFisicoVersaoMedico.post)
+    .post(app.api.exameFisicoVersaoMedico.post);
 
-    app.route('/exameFisicoVersaoMedico/:id')
+  app
+    .route("/exame_fisico_versao_medico/:id")
     .get(app.api.exameFisicoVersaoMedico.getById)
     .delete(app.api.exameFisicoVersaoMedico.remove)
-    .put(app.api.exameFisicoVersaoMedico.put)
+    .put(app.api.exameFisicoVersaoMedico.put);
 
-    app.route('/condicaoClinicaVersaoMedico')
+  app
+    .route("/condicao_clinica_versao_medico")
     .get(app.api.condicaoClinicaVersaoMedico.get)
-    .post(app.api.condicaoClinicaVersaoMedico.post)
+    .post(app.api.condicaoClinicaVersaoMedico.post);
 
-    app.route('/condicaoClinicaVersaoMedico/:id')
+  app
+    .route("/condicao_clinica_versao_medico/:id")
     .get(app.api.condicaoClinicaVersaoMedico.getById)
     .delete(app.api.condicaoClinicaVersaoMedico.remove)
-    .put(app.api.condicaoClinicaVersaoMedico.put)
+    .put(app.api.condicaoClinicaVersaoMedico.put);
 
-    app.route('/sintomaVersaoPaciente')
+  app
+    .route("/sintoma_versao_paciente")
     .get(app.api.sintomaVersaoPaciente.get)
-    .post(app.api.sintomaVersaoPaciente.post)
+    .post(app.api.sintomaVersaoPaciente.post);
 
-    app.route('/sintomaVersaoPaciente/:id')
+  app
+    .route("/sintoma_versao_paciente/:id")
     .get(app.api.sintomaVersaoPaciente.getById)
     .delete(app.api.sintomaVersaoPaciente.remove)
-    .put(app.api.sintomaVersaoPaciente.put)
-}
+    .put(app.api.sintomaVersaoPaciente.put);
+};
