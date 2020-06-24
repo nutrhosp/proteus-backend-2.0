@@ -10,6 +10,8 @@ module.exports = (app) => {
     .delete(app.api.administrador.remove)
     .put(app.api.administrador.put);
 
+  app.route("/login").post(app.api.auth.signIn);
+
   app.route("/paciente").get(app.api.paciente.get).post(app.api.paciente.post);
 
   app

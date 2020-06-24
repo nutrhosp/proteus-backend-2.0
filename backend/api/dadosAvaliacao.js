@@ -12,8 +12,6 @@ module.exports = (app) => {
       .innerJoin("paciente", "paciente.paciente_id", "avaliacao.paciente_id")
       .groupBy("avaliacao.paciente_id");
 
-    console.log(records);
-
     res.json(records);
   };
 
