@@ -51,8 +51,9 @@ module.exports = (app) => {
         .db("paciente")
         .update(paciente)
         .where({ paciente_id: paciente_id })
-        .then((res) => res.status(204).send())
+        .then(() => res.status(204).send())
         .catch((err) => {
+          console.log(err);
           res.status(500).send(err);
         });
     } else {

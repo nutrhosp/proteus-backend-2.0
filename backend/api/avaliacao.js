@@ -96,7 +96,9 @@ module.exports = (app) => {
           avaliacao_medicamento,
         })
         .where({ avaliacao_id: avaliacao_id })
-        .then((res) => res.status(204).send())
+        .then(() => {
+          res.status(204).send();
+        })
         .catch((err) => {
           res.status(500).send(err);
         });

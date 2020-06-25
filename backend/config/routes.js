@@ -142,12 +142,11 @@ module.exports = (app) => {
 
   app
     .route("/sintoma_versao_paciente")
-    .get(app.api.sintomaVersaoPaciente.get)
     .post(app.api.sintomaVersaoPaciente.post);
 
   app
     .route("/sintoma_versao_paciente/:id")
-    .get(app.api.sintomaVersaoPaciente.getById)
+    .get(app.api.sintomaVersaoPaciente.getByPatient)
     .delete(app.api.sintomaVersaoPaciente.remove)
     .put(app.api.sintomaVersaoPaciente.put);
 };

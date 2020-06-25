@@ -3,13 +3,6 @@ const knex = require("../config/db");
 module.exports = (app) => {
   const { existsOrError } = app.api.validator;
 
-  const get = async (req, res) => {
-    const sintomaVersaoPaciente = await knex("sintomaVersaoPaciente").select(
-      "*"
-    );
-    return res.json(sintomaVersaoPaciente);
-  };
-
   const remove = async (req, res) => {
     try {
       existsOrError(req.params.id, "Versão Paciente não existe!");
@@ -26,12 +19,23 @@ module.exports = (app) => {
     }
   };
 
-  const getById = (req, res) => {
-    app
-      .db("sintomaVersaoPaciente")
-      .where({ sintomaVersaoPaciente_id: req.params.id })
-      .first()
-      .then((sintomaVersaoPaciente) => res.json(sintomaVersaoPaciente));
+  const getByPatient = async (req, res) => {
+    try {
+      const symptoms = await app.db
+        .select("sintomas_nome")
+        .from("sintomaversaopaciente")
+        .innerJoin(
+          "sintomas",
+          "sintomas.sintomas_id",
+          "sintomaversaopaciente.sintomas_id"
+        )
+        .where({ versaoPaciente_id: req.params.id });
+
+      res.json(symptoms);
+    } catch (err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
   };
 
   const post = async (req, res) => {
@@ -66,5 +70,5 @@ module.exports = (app) => {
     }
   };
 
-  return { get, getById, post, put, remove };
+  return { getByPatient, post, put, remove };
 };

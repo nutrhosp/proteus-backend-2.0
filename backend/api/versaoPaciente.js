@@ -82,7 +82,7 @@ module.exports = (app) => {
           versaoPaciente_quadro4,
         })
         .where({ versaoPaciente_id: versaoPaciente_id })
-        .then((res) => res.status(204).send())
+        .then(() => res.status(204).send())
         .catch((err) => {
           res.status(500).send(err);
         });
