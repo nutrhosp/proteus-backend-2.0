@@ -34,13 +34,16 @@ module.exports = (app) => {
 
   const post = async (req, res) => {
     const avaliacaoMedico = req.body;
-    await knex("versaoMedico")
-      .insert(avaliacaoMedico)
-      .then((_) => res.status(201).send())
-      .catch((err) => {
-        console.log(res);
-        return res.status(500).send(err);
-      });
+    try {
+      const newVersaoMedico = await knex("versaoMedico").insert(
+        avaliacaoMedico
+      );
+      console.log(newVersaoMedico);
+      res.json(newVersaoMedico);
+    } catch (err) {
+      console.log(err);
+      return res.status(500).send(err);
+    }
   };
 
   const put = async (req, res) => {

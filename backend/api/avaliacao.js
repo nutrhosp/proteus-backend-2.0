@@ -68,6 +68,8 @@ module.exports = (app) => {
       avaliacao_estadiamento,
       avaliacao_exame,
       avaliacao_medicamento,
+      avaliacao_consistencia,
+      avaliacao_evolucao,
     } = req.body;
     const avaliacao_id = req.params.id;
     if (avaliacao_id) {
@@ -94,6 +96,8 @@ module.exports = (app) => {
           avaliacao_estadiamento,
           avaliacao_exame,
           avaliacao_medicamento,
+          avaliacao_consistencia,
+          avaliacao_evolucao,
         })
         .where({ avaliacao_id: avaliacao_id })
         .then(() => {

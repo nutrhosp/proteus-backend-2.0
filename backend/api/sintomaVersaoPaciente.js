@@ -22,7 +22,7 @@ module.exports = (app) => {
   const getByPatient = async (req, res) => {
     try {
       const symptoms = await app.db
-        .select("sintomas_nome")
+        .select("sintomas_nome", "sintomas_valor")
         .from("sintomaversaopaciente")
         .innerJoin(
           "sintomas",
@@ -40,7 +40,6 @@ module.exports = (app) => {
 
   const post = async (req, res) => {
     const sintomasPaciente = req.body;
-    console.log(sintomasPaciente);
     await knex("sintomaVersaoPaciente")
       .insert(sintomasPaciente)
       .then((_) => res.status(201).send())
