@@ -16,5 +16,31 @@ module.exports = (app) => {
     res.json(records);
   };
 
-  return { getAll };
+  const getByPatient = async (req, res) => {
+    const patient = req.params.id;
+    console.log(patient);
+    try {
+      const records = await app.db
+        .select(
+          "avaliacao.avaliacao_id",
+          "avaliacao_dataMedico",
+          "versaomedico_pontuacaoTotal",
+          "versaoMedico_avaliacaoGlobal",
+          "versaoMedico_id"
+        )
+        .from("avaliacao")
+        .innerJoin(
+          "versaomedico",
+          "avaliacao.avaliacao_id",
+          "versaomedico.avaliacao_id"
+        )
+        .where({ paciente_id: patient });
+
+      res.json(records);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  return { getAll, getByPatient };
 };

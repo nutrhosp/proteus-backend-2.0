@@ -29,8 +29,7 @@ module.exports = (app) => {
   const getById = (req, res) => {
     app
       .db("exameFisicoVersaoMedico")
-      .where({ exameFisicoVersaoMedico_id: req.params.id })
-      .first()
+      .where({ versaoMedico_id: req.params.id })
       .then((exameFisicoVersaoMedico) => res.json(exameFisicoVersaoMedico));
   };
 

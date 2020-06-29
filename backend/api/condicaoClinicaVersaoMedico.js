@@ -1,4 +1,5 @@
 const knex = require("../config/db");
+const { from } = require("../config/db");
 
 module.exports = (app) => {
   const { existsOrError } = app.api.validator;
@@ -27,10 +28,20 @@ module.exports = (app) => {
   };
 
   const getById = (req, res) => {
-    app
-      .db("condicaoClinicaVersaoMedico")
-      .where({ condicaoClinicaVersaoMedico_id: req.params.id })
-      .first()
+    app.db
+      .select("condicaoClinica_nome")
+      .from("condicaoclinica")
+      .innerJoin(
+        "condicaoclinicaversaomedico",
+        "condicaoclinica.condicaoclinica_id",
+        "condicaoclinicaversaomedico.condicaoclinica_id"
+      )
+      .innerJoin(
+        "versaomedico",
+        "versaomedico.versaoMedico_id",
+        "condicaoclinicaversaomedico.versaoMedico_id"
+      )
+      .where("versaomedico.versaoMedico_id", req.params.id)
       .then((condicaoClinicaVersaoMedico) =>
         res.json(condicaoClinicaVersaoMedico)
       );

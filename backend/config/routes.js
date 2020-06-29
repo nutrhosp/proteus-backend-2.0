@@ -33,6 +33,12 @@ module.exports = (app) => {
 
   app.route("/dados_avaliacao").get(app.api.dadosAvaliacao.getAll);
 
+  app.route("/dados_avaliacao/:id").get(app.api.dadosAvaliacao.getByPatient);
+
+  app
+    .route("/versao_paciente_por_avaliacao/:id")
+    .get(app.api.versaoPacientePorAvaliacao.getByEvaluation);
+
   app
     .route("/avaliacao")
     .get(app.api.avaliacao.get)
