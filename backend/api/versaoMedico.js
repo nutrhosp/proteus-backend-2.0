@@ -38,7 +38,6 @@ module.exports = (app) => {
       const newVersaoMedico = await knex("versaoMedico").insert(
         avaliacaoMedico
       );
-      console.log(newVersaoMedico);
       res.json(newVersaoMedico);
     } catch (err) {
       console.log(err);
@@ -50,14 +49,17 @@ module.exports = (app) => {
     const avaliacaoMedico = req.body;
     const versaoMedico_id = req.params.id;
     if (versaoMedico_id) {
-      app
-        .db("versaoMedico")
-        .update(avaliacaoMedico)
-        .where({ versaoMedico_id: versaoMedico_id })
-        .then((res) => res.status(204).send())
-        .catch((err) => {
-          res.status(500).send(err);
-        });
+      try {
+        await app
+          .db("versaoMedico")
+          .update(avaliacaoMedico)
+          .where({ versaoMedico_id: versaoMedico_id });
+
+        res.status(200).send();
+      } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+      }
     } else {
       return res.status(400);
     }
